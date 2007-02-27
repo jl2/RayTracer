@@ -1,4 +1,24 @@
-#include <iostream>
+// triangle.cpp - Implementation of the Triangle class
+
+/*
+  Copyright (C) 2007 Jeremiah LaRocco
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
 #include "triangle.h"
 
 Triangle::Triangle(Point p1, Point p2, Point p3, Texture *txt, bool fn)
@@ -64,20 +84,5 @@ Intersection Triangle::intersect(Ray r, bool calcNorm) {
   return Intersection(f*e2.dot(q), true, this);
 }
 
-void Triangle::show() {
-  std::cout << "Triangle:\n";
-  std::cout << "P1: ("
-	    << pt1.x() << ", "
-	    << pt1.y() << ", "
-	    << pt1.z() << ")\n";
-  std::cout << "P2: ("
-	    << pt2.x() << ", "
-	    << pt2.y() << ", "
-	    << pt2.z() << ")\n";
-  std::cout << "P3: ("
-	    << pt3.x() << ", "
-	    << pt3.y() << ", "
-	    << pt3.z() << ")\n";
-}
 Triangle::~Triangle() {
 }
