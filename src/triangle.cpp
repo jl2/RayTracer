@@ -20,6 +20,7 @@
 */
 
 #include "triangle.h"
+#include <iostream>
 
 Triangle::Triangle(Point p1, Point p2, Point p3, Texture *txt, bool fn)
   : Object(txt), pt1(p1), pt2(p2), pt3(p3), flipNorm(fn) {
@@ -82,6 +83,14 @@ Intersection Triangle::intersect(Ray r, bool calcNorm) {
     }
   }
   return Intersection(f*e2.dot(q), true, this);
+}
+
+void Triangle::show() {
+    std::cout << "Triangle:\n"
+	      << "pt1: " << pt1.x() << ", " << pt1.y() << ", " << pt1.z()
+	      << "\npt2: " << pt2.x() << ", " << pt2.y() << ", " << pt2.z()
+	      << "\npt3: " << pt3.x() << ", " << pt3.y() << ", " << pt3.z()
+	      << "\n";
 }
 
 Triangle::~Triangle() {

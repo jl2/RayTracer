@@ -35,6 +35,10 @@ Color &Image::operator()(int x, int y) {
   return getPixel(x,y);
 }
 Color &Image::getPixel(int x, int y) {
+    if ((x>height) || (y>width) ||
+	(x<0) || (y<0)) {
+	throw std::runtime_error("Invalid pixel");
+    }
   return image[(y*width)+x];
 }
     

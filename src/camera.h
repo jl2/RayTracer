@@ -42,8 +42,7 @@
 class Camera {
  public:
   Camera();
-  Camera(Point location, Vector direction,
-	 real distance=1.0, Vector up=Vector(0.0,0.0,1.0));
+  Camera(Point location, Point lookAt, Vector up);
   Camera(Point location, Point lookAt, real distance=1.0,
 	 Vector up=Vector(0.0,1.0,0.0));
   void setupCamera(Point location, Point lookAt, Vector up);    
@@ -52,14 +51,17 @@ class Camera {
   Point getLocation();
   void setLocation(Point location);
   Vector getDirection();
-  void setDirection(Vector direction);
   Vector getUp();
-  void setUp(Vector up);    
+  void setUp(Vector up);
+  void setLookAt(Point lookAt);
+  Point getLookAt();
  private:
   Point loc;
   Vector dir;
   real dist;
   Vector upv;
+  Vector realUp;
+  Point lat;
 };
 
 #endif

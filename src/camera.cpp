@@ -22,33 +22,36 @@
 #include "camera.h"
 
 Camera::Camera() {
-  loc = Point(0.0,0.0,0.0);
-  dir = Vector(0.0,1.0,0.0);
+  loc = Point(0.0,1.0,0.0);
+  lat = Point(0.0,0.0,0.0);
+  dir = Vector(0.0,-1.0,0.0);
   dist = 1.0;
-  upv = Vector(0.0,0.0,1.0);
+  upv = realUp = Vector(0.0,0.0,1.0);
 }
-Camera::Camera(Point location, Vector direction,
-       real distance, Vector up)
-  : loc(location),
-    dir(direction.normal()),
-    dist(distance),
-    upv(up) {}
 
 Camera::Camera(Point location, Point lookAt, real distance,
 	       Vector up) : loc(location),
-			    dir(Vector(lookAt.x()-location.x(),
-				       lookAt.y()-location.y(),
-				       lookAt.z()-location.z()).normal()),
+			    dir((lookAt-location).normal()),
 			    dist(distance),
-			    upv(dir.cross(up).cross(dir)) {}
+			    upv(dir.cross(up).cross(dir)),
+			    lat(lookAt),
+			    realUp(up) {}
+
+Camera::Camera(Point location, Point lookAt, Vector up) :
+    loc(location),
+    dir((lookAt-location).normal()),
+    dist(1.0),
+    upv(dir.cross(up).cross(dir)),
+    lat(lookAt),
+    realUp(up) {}
 
 void Camera::setupCamera(Point location, Point lookAt, Vector up) {
   loc = location;
-  dir = Vector(location.x()-lookAt.x(),
-	       location.y()-lookAt.y(),
-	       location.y()-lookAt.z()).normal();
+  lat = lookAt;
+  dir = (lat-loc).normal();
   dist = 1.0;
-  upv = up;
+  realUp = up;
+  upv = dir.cross(up).cross(dir);
 }
     
 real Camera::getImagePlaneDistance() {
@@ -62,12 +65,19 @@ Point Camera::getLocation() {
 }
 void Camera::setLocation(Point location) {
   loc = location;
+  dir = (lat-loc).normal();
+  upv = dir.cross(realUp).cross(dir);
 }
 Vector Camera::getDirection() {
   return dir;
 }
-void Camera::setDirection(Vector direction) {
-  dir = direction;
+void Camera::setLookAt(Point lookAt) {
+    lat = lookAt;
+    dir = (lat-loc).normal();
+    upv = dir.cross(realUp).cross(dir);
+}
+Point Camera::getLookAt() {
+    return lat;
 }
 Vector Camera::getUp() {
   return upv;

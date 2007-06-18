@@ -1,0 +1,16 @@
+;; Object tests/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tests/"
+  :tables (list 
+   (semanticdb-table "tests.h"
+    :major-mode 'c-mode
+    :tags '(("cxxtest/TestSuite.h" include (:system-flag t) nil [1 31]) ("point.h" include nil nil [33 51]) ("vector.h" include nil nil [52 71]) ("TestSuite" type (:superclasses ("CxxTest::TestSuite") :members (("public" label nil (reparse-symbol classsubparts) [120 127]) ("setUp" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [144 149])) :type "void") (reparse-symbol classsubparts) [133 155]) ("tearDown" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [175 180])) :type "void") (reparse-symbol classsubparts) [161 186]) ("testPointVectorAddition" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [221 226])) :type "void") (reparse-symbol classsubparts) [192 439]) ("testPointVectorPlusEquals" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [476 481])) :type "void") (reparse-symbol classsubparts) [445 666]) ("testPointEquals" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [693 698])) :type "void") (reparse-symbol classsubparts) [672 790]) ("testPointMinus" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [816 821])) :type "void") (reparse-symbol classsubparts) [796 952]) ("testVectorEqual" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [977 982])) :type "void") (reparse-symbol classsubparts) [956 1078]) ("testVectorScale" function (:arguments (("" variable (:type "void") (reparse-symbol arg-sub-list) [1105 1110])) :type "void") (reparse-symbol classsubparts) [1084 1205])) :type "class") nil [73 1212]))
+    :file "tests.h"
+    :pointmax 1213
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre3"
+  :semanticdb-version "2.0pre3"
+  )

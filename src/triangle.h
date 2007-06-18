@@ -35,6 +35,7 @@ class Triangle : public Object {
   virtual void getExtents(real &xmin, real &xmax,
 			  real &ymin, real &ymax,
 			  real &zmin, real &zmax);
+  virtual void show();
   virtual ~Triangle();
  private:
   Point pt1;

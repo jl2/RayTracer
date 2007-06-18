@@ -31,6 +31,7 @@ class Vector {
   real &j();
   real &k();
   bool operator==(Vector v);
+  bool operator!=(Vector v) { return !(*this==v); };
   Vector operator+(Vector v);
   Vector operator+=(Vector v);
   Vector operator-(Vector v);

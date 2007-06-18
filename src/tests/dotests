@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Delete the old test runner and executable if they're still around
+[ -e "runner.cpp" ] && rm runner.cpp
+[ -e "runner" ] && rm runner
+
+# Generate the test runner
+cxxtestgen.pl --error-printer -o runner.cpp tests.h
+
+# Compile the test runner
+if [ $? == 0 ]
+then
+    g++ -I .. -o runner runner.cpp ../vector.o ../point.o ../color.o ../ray.o \
+	../camera.o ../triangle.o ../texture.o ../object.o ../intersection.o \
+	../sphere.o ../light.o ../image.o
+else
+    echo "Tests could not be generated."
+    exit 1
+fi
+
+# Run the tests already
+if [ $? == 0 ]
+then
+    ./runner
+    exit 1
+else
+    echo "Compile errors.  Not running tests."
+    exit 1
+fi

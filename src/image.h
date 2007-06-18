@@ -25,6 +25,7 @@
 #include <ostream>
 #include "globaldefs.h"
 #include "color.h"
+#include <stdexcept>
 
 // The Image class stores an array of colors that represent an image.
 class Image {
