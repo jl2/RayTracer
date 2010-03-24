@@ -22,6 +22,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include <cmath>
 
 #include "globaldefs.h"
@@ -59,7 +60,7 @@ int main(int argc, char *argv[]) {
 
   if (argc<2) {
     std::cerr << "Syntax is:\n\t" << argv[0] << " filename\n";
-    exit(1);
+    std::exit(1);
   }
   
   Image img(360,360);
